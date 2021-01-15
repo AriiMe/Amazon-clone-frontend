@@ -1,0 +1,43 @@
+.product{
+    display: flex;
+ 
+    align-items: center;
+     background-color:#fff;
+   
+    
+  
+    width: 100%;
+    max-height: 400px;
+    min-width: 100px;
+   z-index: 1;
+   margin: 0px;
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  
+
+}
+.card_container{
+    padding:0 ;
+}
+.product > img{
+    object-fit: contain;
+    margin:10px;
+    margin-bottom: 15px;
+    width: 100%;
+
+}
+.card_col{
+    max-width: 400px;
+}
+
+  
+  .product__price {
+    margin-top: 5px;
+  }
+  
+  .product__info {
+    height: 100px;
+    position:absolute;
+    top:0;
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
