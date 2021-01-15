@@ -33,7 +33,10 @@ class Product extends React.Component {
         {this.state.products.map((product) => (
           <div className="card_container">
             <Col sm={6} md={3} lg={4} className="card_col">
-              <Card style={{ width: "18rem" }} className="product mb-2">
+              <Card
+                style={{ width: "18rem", height: "25rem" }}
+                className="product mb-2"
+              >
                 <h2> {product.name}</h2>
                 <Card.Body>
                   <img src={product.imageUrl} alt="" />
