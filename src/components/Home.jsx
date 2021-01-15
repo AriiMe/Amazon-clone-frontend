@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 
 import "./home.css";
@@ -10,14 +12,13 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home">
+        <img
+          className="home_image"
+          src="https://images-eu.ssl-images-amazon.com/images/G/03/kindle/journeys/YTNkYTJjMWMt/YTNkYTJjMWMt-NDY4MDlmYmEt-w1500._CB412282544_.jpg"
+          style={{ height: "600px", width: "100%" }}
+          alt="home image"
+        ></img>
         <Container fluid className=" px-0">
-          <img
-            className="home_image"
-            src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2020/BlackFriday/Fuji_TallHero_BFWeek_v1_en_US_1x._CB415746974_.jpg"
-            style={{ height: "600px", width: "100%" }}
-            alt="home image"
-          ></img>
-
           <Row>
             <AddProduct />
 
