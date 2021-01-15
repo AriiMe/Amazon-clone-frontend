@@ -34,7 +34,7 @@ class Product extends React.Component {
           <div className="card_container">
             <Col sm={6} md={3} lg={4} className="card_col">
               <Card
-                style={{ width: "18rem", height: "25rem" }}
+                style={{ width: "18rem", height: "23rem" }}
                 className="product mb-2"
               >
                 <h2> {product.name}</h2>
