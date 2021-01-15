@@ -14,30 +14,30 @@ import {
 } from "react-bootstrap";
 export default class Details extends Component {
   state = {
-    Review: {
+    Comment: {
       comment: "",
       rate: null,
       elementId: this.props.match.params.id,
     },
     errMessage: "",
     loading: false,
-    reviews: [],
+    comments: [],
   };
 
   fetchReviews = async () => {
     try {
-      const url = `http://localhost:3666/reviews/${this.state.Review.elementId}`;
+      const url = process.env.URL + `/comments/` + this.state.comment.elementId;
       const response = await fetch(url, {
         method: "GET",
       });
       if (response.ok) {
         const data = await response.json();
-        await this.setState({ reviews: data });
-        console.log(this.state.reviews);
+        await this.setState({ comments: data });
+        console.log(this.state.comments);
       }
     } catch (e) {
       console.log(e);
-      console.log(this.state.Review.projectId);
+      console.log(this.state.comment.projectId);
     }
   };
   componentDidMount = async () => {
@@ -45,19 +45,19 @@ export default class Details extends Component {
   };
 
   updateReviewField = (e) => {
-    let Review = { ...this.state.Review };
+    let comment = { ...this.state.comment };
     let currentId = e.currentTarget.id;
-    Review[currentId] = e.currentTarget.value;
-    this.setState({ Review: Review });
+    comment[currentId] = e.currentTarget.value;
+    this.setState({ comment: comment });
   };
 
   submitReview = async (e) => {
     e.preventDefault();
     this.setState({ loading: true });
     try {
-      let response = await fetch("http://localhost:3666/reviews/", {
+      let response = await fetch(process.env.URL + "/comments/", {
         method: "POST",
-        body: JSON.stringify(this.state.Review),
+        body: JSON.stringify(this.state.comment),
         headers: new Headers({
           "Content-Type": "application/json",
         }),
@@ -66,7 +66,7 @@ export default class Details extends Component {
         this.fetchReviews();
         alert("New Review saved!");
         this.setState({
-          Review: {
+          comments: {
             comment: "",
             rate: null,
             elementId: this.props.match.params.id,
@@ -150,8 +150,8 @@ export default class Details extends Component {
 
         <Container>
           <h1 className="text-left my-4">Reviews</h1>
-          {this.state.reviews &&
-            this.state.reviews.map((e) => (
+          {this.state.comments &&
+            this.state.comments.map((e) => (
               <Media className="reviewMedia">
                 <img
                   width={64}

@@ -28,7 +28,7 @@ class AddProduct extends React.Component {
 
   handleDelete = async () => {
     try {
-      const url = `http://localhost:3666/products/${this.props._id}`;
+      const url = process.env.URL + `/products/` + this.props._id;
       let response = await fetch(url, {
         method: "DELETE",
         headers: {},
@@ -46,7 +46,7 @@ class AddProduct extends React.Component {
 
   EditFetch = async () => {
     try {
-      let response = await fetch(`http://localhost:3666/products`, {
+      let response = await fetch(process.env.URL + `/products`, {
         method: "POST",
         body: JSON.stringify(this.state.product),
         headers: new Headers({
@@ -96,7 +96,7 @@ class AddProduct extends React.Component {
   UploadImageFetch = async (id) => {
     try {
       let response = await fetch(
-        `http://localhost:3666/products/${id}/upload`,
+        process.env.URL + `/products/${id}/upload`,
 
         {
           method: "POST",

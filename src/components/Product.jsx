@@ -10,7 +10,7 @@ class Product extends React.Component {
   fetchProducts = async () => {
     this.setState({ loading: true });
     try {
-      const response = await fetch("http://localhost:3666/products/");
+      const response = await fetch(process.env.URL + "/products/");
       let products = await response.json();
       console.log(products);
       if (response.ok) {
@@ -39,11 +39,7 @@ class Product extends React.Component {
                   <img src={product.imageUrl} alt="" />
                   <p className="text-center text-muted">{product.price}</p>
                 </Card.Body>
-                <p
-                  onClick={() =>
-                    this.props.history.push(`/details/${product._id}`)
-                  }
-                >
+                <p onClick={() => this.props.history.push(`/${product._id}`)}>
                   {" "}
                   Show more{" "}
                 </p>
