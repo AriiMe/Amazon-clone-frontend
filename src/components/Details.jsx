@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { Component } from "react";
 import {
   Media,
@@ -24,7 +26,7 @@ export default class Details extends Component {
 
   fetchReviews = async () => {
     try {
-      const url = `http://localhost:4001/reviews/${this.state.Review.elementId}`;
+      const url = `http://localhost:3666/reviews/${this.state.Review.elementId}`;
       const response = await fetch(url, {
         method: "GET",
       });
@@ -53,7 +55,7 @@ export default class Details extends Component {
     e.preventDefault();
     this.setState({ loading: true });
     try {
-      let response = await fetch("http://localhost:4001/reviews/", {
+      let response = await fetch("http://localhost:3666/reviews/", {
         method: "POST",
         body: JSON.stringify(this.state.Review),
         headers: new Headers({

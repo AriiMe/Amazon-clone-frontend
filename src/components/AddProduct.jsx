@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 
@@ -26,7 +28,7 @@ class AddProduct extends React.Component {
 
   handleDelete = async () => {
     try {
-      const url = `http://localhost:4001/products/${this.props._id}`;
+      const url = `http://localhost:3666/products/${this.props._id}`;
       let response = await fetch(url, {
         method: "DELETE",
         headers: {},
@@ -44,7 +46,7 @@ class AddProduct extends React.Component {
 
   EditFetch = async () => {
     try {
-      let response = await fetch(`http://localhost:4001/products`, {
+      let response = await fetch(`http://localhost:3666/products`, {
         method: "POST",
         body: JSON.stringify(this.state.product),
         headers: new Headers({
@@ -92,40 +94,37 @@ class AddProduct extends React.Component {
   };
 
   UploadImageFetch = async (id) => {
-   
-    try{
-    let response = await fetch(
-      `http://localhost:4001/products/${id}/upload`,
+    try {
+      let response = await fetch(
+        `http://localhost:3666/products/${id}/upload`,
 
-    {
-      method: "POST",
-      body: this.state.formData,
-     
+        {
+          method: "POST",
+          body: this.state.formData,
+        }
+      );
+
+      if (response.ok) {
+        let result = response.json();
+        alert("Product saved!");
+        this.setState({ loading: false });
+        console.log(result);
+        this.handleClose();
+      }
+    } catch (e) {
+      console.log(e);
     }
-  )
-  
-  if (response.ok){
-    let result=response.json()
-    alert("Product saved!")
-    this.setState({loading:false})
-    console.log(result)
-    this.handleClose() }
-  }
-  catch(e){console.log(e)}
-      
   };
 
   submitForm = (e) => {
     e.preventDefault();
     this.setState({ loading: true });
-    this.postProduct()
+    this.postProduct();
   };
   postProduct = async () => {
     let ProductId = await this.EditFetch();
-    console.log(ProductId)
-   this.UploadImageFetch(ProductId._id);
-    
-    
+    console.log(ProductId);
+    this.UploadImageFetch(ProductId._id);
   };
   //
 
@@ -136,12 +135,12 @@ class AddProduct extends React.Component {
     return (
       <>
         <Button
-         style ={{zIndex:"999", position:"absolute", top:"0px", }}
+          style={{ zIndex: "999", position: "absolute", top: "0px" }}
           variant="warning"
           className="mx-5"
           onClick={this.handleShow}
         >
-          Add a New Product 
+          Add a New Product
         </Button>
         {this.state.show && (
           <Modal show={this.state.show} onHide={this.handleClose}>
@@ -204,14 +203,14 @@ class AddProduct extends React.Component {
                 </Form.Group>
 
                 <Form.Group>
-								<Form.Label>Change the Image</Form.Label>
-								<Form.Control
-									id="fileUpload"
-									type="file"
-									onChange={this.handleImageUpload}
-									required
-								/>
-							</Form.Group>
+                  <Form.Label>Change the Image</Form.Label>
+                  <Form.Control
+                    id="fileUpload"
+                    type="file"
+                    onChange={this.handleImageUpload}
+                    required
+                  />
+                </Form.Group>
 
                 <Form.Group>
                   <Form.Label htmlFor="category">Category</Form.Label>
