@@ -35,11 +35,15 @@ class Product extends React.Component {
             <Col sm={6} md={3} lg={4} className="card_col">
               <Card
                 style={{ width: "18rem", height: "23rem" }}
-                className="product mb-2"
+                className="product mb-5"
               >
                 <h2> {product.name}</h2>
                 <Card.Body>
-                  <img src={product.imageUrl} alt="" />
+                  <img
+                    style={{ height: "230px", width: "200px" }}
+                    src={product.imageUrl}
+                    alt=""
+                  />
                   <p className="text-center text-muted">{product.price}</p>
                 </Card.Body>
                 <p onClick={() => this.props.history.push(`/${product._id}`)}>

@@ -16,9 +16,9 @@ class Home extends React.Component {
           <img
             className="home_image"
             src="https://images-eu.ssl-images-amazon.com/images/G/03/kindle/journeys/YTNkYTJjMWMt/YTNkYTJjMWMt-NDY4MDlmYmEt-w1500._CB412282544_.jpg"
-            style={{ height: "600px", width: "100%" }}
+            style={{ height: "900px", width: "100%" }}
             alt="home image"
-          ></img>
+          />
           <Row>
             <AddProduct />
 
