@@ -26,7 +26,8 @@ export default class Details extends Component {
 
   fetchReviews = async () => {
     try {
-      const url = process.env.URL + `/comments/` + this.state.comment.elementId;
+      const url =
+        process.env.REACT_APP_URL + `/comments/` + this.state.comment.elementId;
       const response = await fetch(url, {
         method: "GET",
       });
@@ -55,7 +56,7 @@ export default class Details extends Component {
     e.preventDefault();
     this.setState({ loading: true });
     try {
-      let response = await fetch(process.env.URL + "/comments/", {
+      let response = await fetch(process.env.REACT_APP_URL + "/comments/", {
         method: "POST",
         body: JSON.stringify(this.state.comment),
         headers: new Headers({

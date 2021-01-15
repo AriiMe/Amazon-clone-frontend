@@ -10,7 +10,7 @@ class Product extends React.Component {
   fetchProducts = async () => {
     this.setState({ loading: true });
     try {
-      const response = await fetch(process.env.URL + "/products/");
+      const response = await fetch(process.env.REACT_APP_URL);
       let products = await response.json();
       console.log(products);
       if (response.ok) {
